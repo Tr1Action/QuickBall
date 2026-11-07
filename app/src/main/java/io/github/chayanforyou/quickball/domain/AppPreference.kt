@@ -239,7 +239,7 @@ class AppPreference private constructor(context: Context) {
         set(value) = prefs.edit { putBoolean(KEY_HIDE_ON_LANDSCAPE, value) }
 
     var language: String
-        get() = prefs.getString(KEY_LANGUAGE, "en") ?: "en"
+        get() = prefs.getString(KEY_LANGUAGE, "tr") ?: "tr"
         set(value) = prefs.edit { putString(KEY_LANGUAGE, value) }
 
     var autoHideApps: Set<String>

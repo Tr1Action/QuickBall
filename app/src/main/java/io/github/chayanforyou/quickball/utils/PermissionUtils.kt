@@ -41,7 +41,7 @@ object PermissionUtils {
             }
             context.startActivity(intent)
         } catch (_: Exception) {
-            Toast.makeText(context, "Could not open accessibility settings", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Erişilebilirlik ayarları açılamadı", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -13,6 +13,7 @@ import java.util.Locale
 object LanguageUtils {
 
     enum class Language(val code: String, val displayName: String) {
+        TURKISH("tr", "Türkçe"),
         ENGLISH("en", "English"),
         HINDI("hi", "हिंदी"),
         CHINESE("zh", "中文"),
@@ -24,7 +25,7 @@ object LanguageUtils {
         companion object {
             private val codeMap = entries.associateBy { it.code }
 
-            fun fromCode(code: String?): Language = codeMap[code] ?: ENGLISH
+            fun fromCode(code: String?): Language = codeMap[code] ?: TURKISH
         }
     }
 

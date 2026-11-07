@@ -118,9 +118,9 @@ class QuickBallActionHandler(
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 }
             )
-            showToast("Allow 'Modify system settings' permission", performHaptic = true)
+            showToast("'Sistem ayarlarını değiştir' iznini ver", performHaptic = true)
         } catch (_: Exception) {
-            showToast("Could not request system settings permission")
+            showToast("Sistem ayarları izni istenemedi")
         }
     }
 
@@ -342,7 +342,7 @@ class QuickBallActionHandler(
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             runDelayed { context.startActivity(intent) }
-            showToast("Grant Do Not Disturb access")
+            showToast("Rahatsız etmeyin erişimi ver")
             return
         }
 
@@ -364,9 +364,9 @@ class QuickBallActionHandler(
 
     private fun getDndModeText(mode: Int): String {
         return when (mode) {
-            AudioManager.RINGER_MODE_SILENT -> "Do Not Disturb ON"
-            AudioManager.RINGER_MODE_NORMAL -> "Do Not Disturb OFF"
-            else -> "Do Not Disturb OFF"
+            AudioManager.RINGER_MODE_SILENT -> "Rahatsız etmeyin AÇIK"
+            AudioManager.RINGER_MODE_NORMAL -> "Rahatsız etmeyin KAPALI"
+            else -> "Rahatsız etmeyin KAPALI"
         }
     }
 
@@ -390,16 +390,16 @@ class QuickBallActionHandler(
 
     private fun getVibrationModeText(mode: Int): String {
         return when (mode) {
-            AudioManager.RINGER_MODE_VIBRATE -> "Vibration mode ON"
-            AudioManager.RINGER_MODE_NORMAL -> "Vibration mode OFF"
-            else -> "Vibration mode OFF"
+            AudioManager.RINGER_MODE_VIBRATE -> "Titreşim modu AÇIK"
+            AudioManager.RINGER_MODE_NORMAL -> "Titreşim modu KAPALI"
+            else -> "Titreşim modu KAPALI"
         }
     }
 
     // -------------------- Torch --------------------
     private fun toggleTorch() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            showToast("Torch is not supported on this device.", performHaptic = true)
+            showToast("Bu cihazda fener desteklenmiyor.", performHaptic = true)
             return
         }
 
@@ -411,7 +411,7 @@ class QuickBallActionHandler(
 
             val newState = !isTorchOn
             cameraManager.setTorchMode(cameraId, newState)
-            showToast(if (newState) "Torch ON" else "Torch OFF")
+            showToast(if (newState) "Fener AÇIK" else "Fener KAPALI")
         } catch (e: Exception) {
             Log.e(TAG, "Torch toggle failed", e)
         }
@@ -454,7 +454,7 @@ class QuickBallActionHandler(
                 })
             }
         } else {
-            showToast("Mobile data toggle not supported on this device", performHaptic = true)
+            showToast("Bu cihazda mobil veri açma/kapatma desteklenmiyor", performHaptic = true)
         }
     }
 
@@ -470,7 +470,7 @@ class QuickBallActionHandler(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             accessibilityService.performGlobalAction(AccessibilityService.GLOBAL_ACTION_TAKE_SCREENSHOT)
         } else {
-            showToast("Screenshot is not supported on this device.", performHaptic = true)
+            showToast("Bu cihazda ekran görüntüsü desteklenmiyor.", performHaptic = true)
         }
     }
 
@@ -485,7 +485,7 @@ class QuickBallActionHandler(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             accessibilityService.performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN)
         } else {
-            showToast("Lock screen not supported on this device.", performHaptic = true)
+            showToast("Bu cihazda ekran kilitleme desteklenmiyor.", performHaptic = true)
         }
     }
 
@@ -506,7 +506,7 @@ class QuickBallActionHandler(
             Settings.System.ACCELEROMETER_ROTATION,
             newValue
         )
-        showToast(if (newValue == 1) "Auto-rotate ON" else "Auto-rotate OFF")
+        showToast(if (newValue == 1) "Otomatik döndürme AÇIK" else "Otomatik döndürme KAPALI")
     }
 
     // -------------------- Airplane Mode --------------------
@@ -534,7 +534,7 @@ class QuickBallActionHandler(
                 ?.let { intent ->
                     performStash?.invoke()
                     runDelayed { accessibilityService.startActivity(intent) }
-                } ?: showToast("App not found or cannot be launched")
+                } ?: showToast("Uygulama bulunamadı veya açılamıyor")
         } catch (e: Exception) {
             Log.e(TAG, "Failed to launch app: $packageName", e)
         }

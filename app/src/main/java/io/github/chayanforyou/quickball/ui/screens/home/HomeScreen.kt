@@ -98,18 +98,6 @@ fun HomeScreen(
     var showSupportSheet by remember { mutableStateOf(false) }
     var showRateDialog by remember { mutableStateOf(false) }
 
-    LaunchedEffect(Unit) {
-        AppRater.initAppRater(context) {
-            showRateDialog = true
-        }
-    }
-
-    if (showSupportSheet) {
-        SupportBottomSheet(onDismissRequest = {
-            showSupportSheet = false
-        })
-    }
-
     if (showLanguageSheet) {
         LanguageSelectionBottomSheet(onDismissRequest = {
             showLanguageSheet = false
@@ -120,23 +108,6 @@ fun HomeScreen(
         DokiBottomSheet(onDismissRequest = {
             showDokiSheet = false
         })
-    }
-
-    if (showRateDialog) {
-        AppRatingDialog(
-            onDismissRequest = {
-                showRateDialog = false
-                AppRater.remindLater(context)
-            },
-            onRate = {
-                showRateDialog = false
-                AppRater.openPlayStore(context)
-            },
-            onEmail = {
-                showRateDialog = false
-                AppRater.openEmail(context)
-            }
-        )
     }
 
     val isAccessibilityGranted = uiState.isAccessibilityGranted
@@ -197,7 +168,7 @@ fun HomeScreen(
                     IconButton(onClick = {
                         val intent = Intent(
                             Intent.ACTION_VIEW,
-                            "https://github.com/chayanforyou/QuickBall".toUri()
+                            "https://github.com/Tr1Action/quickball".toUri()
                         )
                         context.startActivity(intent)
                     }) {
@@ -234,54 +205,6 @@ fun HomeScreen(
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
 
-                        val attention = rememberAttentionBurst()
-
-                        // Surface is light in light theme and dark in dark theme, the opposite of the button
-                        val buttonColor = MaterialTheme.colorScheme.primary
-                        val shimmerColor = MaterialTheme.colorScheme.surface.copy(alpha = SHIMMER_ALPHA)
-
-                        Surface(
-                            onClick = { showSupportSheet = true },
-                            modifier = Modifier.graphicsLayer {
-                                // Single soft pop per burst
-                                val scale = 1f + POP_SCALE * sin(attention.value * PI.toFloat())
-                                scaleX = scale
-                                scaleY = scale
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            color = buttonColor
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .shimmerSweep(attention, shimmerColor)
-                                    .padding(horizontal = 10.dp, vertical = 6.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_coffee),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.inverseOnSurface,
-                                    modifier = Modifier
-                                        .size(24.dp)
-                                        .graphicsLayer {
-                                            // Wiggle that settles by the end of the burst
-                                            val progress = attention.value
-                                            rotationZ = WIGGLE_DEGREES * (1f - progress) *
-                                                    sin(progress * 4f * PI.toFloat())
-                                        },
-                                )
-                                Text(
-                                    text = stringResource(R.string.support_me),
-                                    style = MaterialTheme.typography.labelSmall.copy(
-                                        fontFamily = CookieFontFamily,
-                                        fontSize = 14.sp,
-                                    ),
-                                    color = MaterialTheme.colorScheme.inverseOnSurface,
-                                    fontWeight = FontWeight.Normal
-                                )
-                            }
-                        }
                     }
                 }
             }

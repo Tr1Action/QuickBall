@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.github.chayanforyou.quickball"
+        applicationId = "io.github.tr1action.quickball"
         minSdk = 21
         targetSdk = 37
         versionCode = 25
@@ -31,8 +31,21 @@ android {
         }
     }
 
+    signingConfigs {
+        create("tr1action") {
+            storeFile = file("hizlitop.jks")
+            storePassword = "hizlitop123"
+            keyAlias = "hizlitop"
+            keyPassword = "hizlitop123"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("tr1action")
+        }
         release {
+            signingConfig = signingConfigs.getByName("tr1action")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -59,7 +72,7 @@ android {
 }
 
 base {
-    archivesName = "quick-ball-${android.defaultConfig.versionName}"
+    archivesName = "hizli-top-${android.defaultConfig.versionName}"
 }
 
 dependencies {
