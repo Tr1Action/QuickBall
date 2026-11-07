@@ -31,7 +31,7 @@ enum class QuickBallTheme(
     val isBorderEnabled: Boolean = true
 ) {
     DEFAULT(
-        title = "Default",
+        title = "Varsayılan",
         ballColor = AppDefaults.BALL_COLOR,
         ballIconColor = AppDefaults.BALL_ICON_COLOR,
         ballBorderColor = AppDefaults.BALL_BORDER_COLOR,

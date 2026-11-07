@@ -56,7 +56,7 @@ fun DokiBottomSheet(
                     .padding(horizontal = 24.dp, vertical = 4.dp)
             ) {
                 Text(
-                    text = "MANUFACTURER",
+                    text = "ÜRETİCİ",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontWeight = FontWeight.Bold,
@@ -87,7 +87,7 @@ fun DokiBottomSheet(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "DEVICE",
+                        text = "CİHAZ",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
@@ -107,7 +107,7 @@ fun DokiBottomSheet(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "RUNNING",
+                        text = "SÜRÜM",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
@@ -141,13 +141,13 @@ fun DokiBottomSheet(
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Text(
-                            text = "Allow Auto Start",
+                            text = "Otomatik başlatmaya izin ver",
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "Quick Ball needs Auto Start enabled to stay active in the background. Without it, the app may stop working properly when closed.",
+                            text = "Hızlı Top'un arka planda çalışmaya devam etmesi için Otomatik başlatma açık olmalı. Kapalıysa uygulama kapatıldığında düzgün çalışmayabilir.",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             lineHeight = 16.sp
@@ -161,7 +161,7 @@ fun DokiBottomSheet(
                             ),
                         ) {
                             Text(
-                                text = "Enable Now",
+                                text = "Şimdi aç",
                                 style = MaterialTheme.typography.bodyMedium,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
@@ -174,13 +174,13 @@ fun DokiBottomSheet(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
-                        text = "Unrestricted Battery Usage",
+                        text = "Kısıtlamasız pil kullanımı",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "Your device is restricting Quick Ball's background activity. Disable battery optimization to keep Quick Ball running smoothly at all times.",
+                        text = "Cihazın Hızlı Top'un arka plan etkinliğini kısıtlıyor. Hızlı Top'un her zaman sorunsuz çalışması için pil optimizasyonunu kapat.",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         lineHeight = 16.sp
@@ -194,7 +194,7 @@ fun DokiBottomSheet(
                         ),
                     ) {
                         Text(
-                            text = "Adjust Settings",
+                            text = "Ayarları düzenle",
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                         )
